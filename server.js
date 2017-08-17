@@ -1,24 +1,38 @@
 const express = require("express");
 const app = express();
-const server = require("http").createServer(app);
-const io = require("socket.io").listen(server);
-users = [];
-connections = [];
-
-server.listen(process.env.PORT || 3000);
-console.log("running")
+const server = require("http").Server(app);
+const io = require("socket.io")(server);
 
 
+
+
+
+app.use(express.static('./public'))
 app.get("/", function(req, res){
-	res.sendFile(__dirname + '/index.html');
+	res.render('/public/index.html');
 });
 
 
-io.sockets.on("connection", function(socket){
-	connections.push(socket);
-	console.log("Connected: %s sockets connected", connections.length);
+io.on("connection", function(socket){
+	
+	console.log("New socket connection");
+	
 	socket.on("disconnect", function(data){
-		connections.splice(connections.indexOf(socket), 1)
-		console.log("Disconnected: %s sockets connected", connections.length);
+	
+		console.log("Disconnected") 
+
 	});
+	socket.on("chat message", (data) =>{
+		console.log(data);
+		io.emit("chat message", data);
+
+	})
+
 }); 
+
+
+
+
+server.listen(3000, () => { 
+	console.log("running")
+});
