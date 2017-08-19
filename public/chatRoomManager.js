@@ -5,7 +5,7 @@ var Chatroom = function(){
 Chatroom.prototype.setContainer = function(container) {
 	// container should be jquery object
 	this.container = container
-	console.log("sdfgsdf")
+	
 };
 Chatroom.prototype.initialize = function(user) {
 	var self = this
@@ -32,9 +32,27 @@ Chatroom.prototype.initialize = function(user) {
 Chatroom.prototype.initialRender = function(){
 	this.container
 	.append(
+		$("<div class='dropdown'>")
+		.append(
+			$("<button class='dropbtn'>Herds</button>")
+		
+		.append(
+			$("<div class=dropdown-content>")
+		.append(
+			$("<a href='#'>Herd 1</a>")
+		.append(
+			$("<a href='#'>Herd 2</a>")
+
+		)	
+	  )
+	)
+  )
+)
+
+	.append(
 		$("<h1>")
 		.append(
-			"Group name"
+			"Herd name"
 		)
 	) 
 	.append(
@@ -43,9 +61,13 @@ Chatroom.prototype.initialRender = function(){
 	.append(
 		$("<form class='messageForm'>")
 		.append(
-			$("<input class='messageInput'>")
+			$("<textarea class='messageInput'>")
+			)
+		.append(
+			$("<button class='sendButton'>Submit</button>")
 		)
 	)
+  
 }
 
 // add html for dropdown- includes button, row for each group that exists.

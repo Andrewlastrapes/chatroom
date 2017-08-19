@@ -1,7 +1,7 @@
 
 
 $(function(){
-	console.log("Asdf")
+	console.log("khdfhgjdsfhg")
 	var user = {
 		username : "andrew"
 	}
