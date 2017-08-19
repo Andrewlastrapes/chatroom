@@ -14,8 +14,10 @@ $(function(){
 	
 	
 	$('#usernameForm').submit(function(){
-		socket.emit("username",$("#username").val() + ":"), 
+		// socket.emit("username",$("#username").val() + ":"), 
 			// object.name.push($("#username").val())
+			object.name = $("#username").val();
+			console.log(object.name)
 			$("#username").val("");
 			return false
 	});
@@ -27,12 +29,18 @@ $(function(){
 			return false
 		});
 
+
 	socket.on("chat message", function(data){
-		$("#chat").append("<h2>" + data + "<h2>")
+		$("#chat").append(object.name + "<h2>" + data + "<h2>")
 		});
-	socket.on("username", function(data){
-		$("#user").append("<p>" + data + "<p>")
-	})
+
+
+	// socket.on("chat message", function(data){
+	// 	$("#chat").append("<h2>" + data + "<h2>")
+	// 	});
+	// socket.on("username", function(data){
+	// 	$("#user").append("<p>" + data + "<p>")
+	// })
 
 
 

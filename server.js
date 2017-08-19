@@ -27,12 +27,17 @@ io.on("connection", function(socket){
 		io.emit("chat message", data);
 
 	})
+		socket.on("username", (data) =>{
+		console.log(data);
+		io.emit("username", data);
+
+	})
 
 }); 
 
 
 
 
-server.listen(3000, () => { 
+server.listen(4000, () => { 
 	console.log("running")
 });
