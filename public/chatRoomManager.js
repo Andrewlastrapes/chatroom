@@ -1,22 +1,46 @@
+
+
+	
+
+
 var Chatroom = function(){
 
 } 
+
+
+
 
 Chatroom.prototype.setContainer = function(container) {
 	// container should be jquery object
 	this.container = container
 	
 };
+
+
+
 Chatroom.prototype.initialize = function(user) {
+
 	var self = this
 	this.user = user;
+
+	$(".button").on("click", function(event){
+	event.preventDefault();
+	localStorage.setItem("username", $("#username").val())
+	});
+
+
 	var socket = io("http://localhost:4000");
 	$(".messageForm").submit(function(){
-		// get username from local storage
+		// var name = localStorage.getItem("username");
 		// if username isnt in user storage, then prompt for user name.
-		
+
+
 		var payload = {
-			user : self.user.username,
+			
+			user: localStorage.getItem("username"),
+
+			// user : self.user.username,
+
 			message: $(".messageInput").val()
 		}
 		socket.emit("chat message", payload)
@@ -36,21 +60,23 @@ Chatroom.prototype.initialize = function(user) {
 		// event.preventDefault();
 			console.log($(event.currentTarget).html())
 			socket.emit("on change group", $(event.currentTarget).html())
-	})
+	});
 
 		
+});
+}
+	
 
-	})
 
-
-
-};
 
 var chatroom = new Chatroom()
 
 chatroom.initialize({
-	username: "andrew"
+	
+	username: localStorage.getItem("username") 
+
 })
+
 
 
 

@@ -2,7 +2,7 @@
 
 $(function(){
 	var user = {
-		username : "andrew"
+		username : "kjdsfhg"
 	}
 	var chatroom = new Chatroom();
 	chatroom.setContainer($(".chatRoomContainer"));
