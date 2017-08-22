@@ -3,9 +3,9 @@ const app = express();
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
 const _ = require('lodash');
-
-
 const path = require("path");
+
+
 
 
 
@@ -13,6 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get("/", function(req, res){
 	res.sendFile(path.join(__dirname, 'public/fakeindex.html'));
 });
+
 
 
 

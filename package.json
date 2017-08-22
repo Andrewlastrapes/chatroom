@@ -21,6 +21,7 @@
     "lodash": "^4.17.4",
     "mongodb": "*",
     "mongoose": "*",
+    "mysql": "^2.14.1",
     "passport": "*",
     "passport-http": "*",
     "passport-local": "*",
