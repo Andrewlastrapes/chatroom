@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="chatRoomStyles.css">
+	<link href="https://fonts.googleapis.com/css?family=Nobile|Paytone+One" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+<body>
+<div class="chatRoomContainer"></div>
+
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-xs-6">
+      <h1>Herd Name</h1>
+    </div>
+    <div class="col-xs-6">
+      <div class="dropdown">
+        <button class='dropbtn'>Herds</button>
+        <div class="dropdown-content">
+        
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="messageContainer"></div>
+
+<form class="messageForm">
+  <textarea class="messageInput">
+  </textarea>
+<button class="sendButton">Submit</button>
+</form>
+
+</div>
+
+
+
+
+</body>
+<script src="../socket.io/socket.io.js"></script>
+<script src="chatRoomManager.js"></script>
+
+</html>

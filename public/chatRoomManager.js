@@ -9,10 +9,12 @@ Chatroom.prototype.setContainer = function(container) {
 };
 Chatroom.prototype.initialize = function(user) {
 	var self = this
-	this.initialRender();
 	this.user = user;
 	var socket = io("http://localhost:4000");
 	$(".messageForm").submit(function(){
+		// get username from local storage
+		// if username isnt in user storage, then prompt for user name.
+		
 		var payload = {
 			user : self.user.username,
 			message: $(".messageInput").val()
@@ -25,50 +27,35 @@ Chatroom.prototype.initialize = function(user) {
 		$(".messageContainer").append($("<li>")
 			.append(payload.user + ": " + payload.message))
 	})
+	socket.on("groups changed", function(payload){
+		$(".dropdown-content").html("");
+		for (var i = 0; i < payload.length; i++){
+			$(".dropdown-content").append($("<a>").append(payload[i].name).addClass("groupName"))
+		} $(".groupName").off("click");
+			$(".groupName").on("click", function(event){
+		// event.preventDefault();
+			console.log($(event.currentTarget).html())
+			socket.emit("on change group", $(event.currentTarget).html())
+	})
+
+		
+
+	})
+
+
+
 };
 
+var chatroom = new Chatroom()
+
+chatroom.initialize({
+	username: "andrew"
+})
 
 
-Chatroom.prototype.initialRender = function(){
-	this.container
-	.append(
-		$("<div class='dropdown'>")
-		.append(
-			$("<button class='dropbtn'>Herds</button>")
-		
-		.append(
-			$("<div class=dropdown-content>")
-		.append(
-			$("<a href='#'>Herd 1</a>")
-		.append(
-			$("<a href='#'>Herd 2</a>")
 
-		)	
-	  )
-	)
-  )
-)
 
-	.append(
-		$("<h1>")
-		.append(
-			"Herd name"
-		)
-	) 
-	.append(
-		$("<div class='messageContainer'>")
-	)
-	.append(
-		$("<form class='messageForm'>")
-		.append(
-			$("<textarea class='messageInput'>")
-			)
-		.append(
-			$("<button class='sendButton'>Submit</button>")
-		)
-	)
-  
-}
+
 
 // add html for dropdown- includes button, row for each group that exists.
 // add click listeners to the rows. Click listener will emit socket message to change group.

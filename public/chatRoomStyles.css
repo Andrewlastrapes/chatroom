@@ -12,7 +12,7 @@ li {
 }
 
 .messageContainer {
-	border: 2px solid red;
+	
 }
 
 .messageForm {
@@ -30,8 +30,8 @@ li {
 }
 
 .sendButton {
-	/*height: 20px;*/
-	
+	position: absolute;
+
 }
 
 
