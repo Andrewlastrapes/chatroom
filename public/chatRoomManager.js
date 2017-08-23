@@ -16,7 +16,7 @@ Chatroom.prototype.setContainer = function(container) {
 	
 };
 
-getUserByUserName()
+
 
 Chatroom.prototype.initialize = function(user) {
 
@@ -65,16 +65,9 @@ Chatroom.prototype.initialize = function(user) {
 		
 });
 }
-	
 
+// User.find({"name"})
 
-var chatroom = new Chatroom()
-
-chatroom.initialize({
-	
-	username: localStorage.getItem("username") 
-
-})
 
 
 

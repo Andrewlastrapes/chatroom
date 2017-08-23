@@ -11,6 +11,11 @@ li {
 
 }
 
+
+.top {
+  padding-top: 5%;
+}
+
 .messageContainer {
 	
 }
@@ -45,6 +50,7 @@ li {
     cursor: pointer;
     width: 150%;
     height: 120%;
+    margin-left: 500%;
 
 }
 
