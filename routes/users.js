@@ -13,7 +13,13 @@ router.get('/login', function(req, res){
 	res.render('login');
 });
 
+router.get('/chatroom', function(req, res){
+	res.render('chatroom', {layout: false});
+});
 
+
+
+console.log("hi")
 
 router.post('/register', function(req, res){
 	var name = req.body.name;
@@ -95,10 +101,11 @@ passport.deserializeUser(function(id, done) {
 
 
 
+
 router.post('/login',
-  passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login',failureFlash: true}),
+  passport.authenticate('local', {successRedirect:'chatroom', failureRedirect:'/users/login',failureFlash: true}),
   function(req, res) {
-    res.redirect('/');
+    res.redirect('users/chatroom');
   });
 
 router.get('/logout', function(req, res){

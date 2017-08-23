@@ -16,7 +16,7 @@ Chatroom.prototype.setContainer = function(container) {
 	
 };
 
-
+getUserByUserName()
 
 Chatroom.prototype.initialize = function(user) {
 
@@ -66,7 +66,6 @@ Chatroom.prototype.initialize = function(user) {
 });
 }
 	
-
 
 
 var chatroom = new Chatroom()
