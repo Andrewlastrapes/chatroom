@@ -14,7 +14,10 @@ var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
-var db = require('mongoose');
+var mongoose = require('mongoose');
+
+
+var db = mongoose.connection;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -62,6 +65,7 @@ app.use(function (req, res, next) {
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
   res.locals.user = req.flash("error");
+  res.locals.user = req.user || null;
   next();
 });
 
